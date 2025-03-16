@@ -9,6 +9,19 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
+const numbersInMzabia = 
+{
+  1: "إيقن",
+  2: "سن",
+  3: "شارض", 
+  4: "اكز",
+  5: "سمس",
+  6: "سز",
+  7: "سا",
+  8: "تام",
+  9: "تس", 
+}
+
 const VoiceVisualizer = ({ stream }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
@@ -368,7 +381,7 @@ export default function RecordPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
             >
-              <h2 className="text-xl font-bold mb-4 pb-2 border-b border-gray-200 text-indigo-700">الرقم {number}</h2>
+              <h2 className="text-xl font-bold mb-4 pb-2 border-b border-gray-200 text-indigo-700">الرقم {number} ({numbersInMzabia[number]})</h2>
               <div className="space-y-4">
                 {variations.map((variation) => {
                   const recordingKey = `${number}-${variation}`;
@@ -497,3 +510,18 @@ export default function RecordPage() {
     </div>
   );
 }
+
+/* 
+numbersInMzabia = 
+{
+  1: "إيقن",
+  2: "سن",
+  3: "شارض", 
+  4: "اكز",
+  5: "سمس",
+  6: "سز",
+  7: "سا",
+  8: "تام",
+  9: "تس", 
+}
+*/
